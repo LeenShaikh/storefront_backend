@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: storefront
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: storefrontbackendproject2
+    ports:
+      - "5432:5432"
