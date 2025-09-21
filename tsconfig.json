@@ -43,5 +43,5 @@
     "skipLibCheck": true,
     "moduleResolution": "nodenext",
     "forceConsistentCasingInFileNames": true
-  }
+  },
 }
