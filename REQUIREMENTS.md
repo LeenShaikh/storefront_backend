@@ -4,6 +4,44 @@ This file contains details of the requirements for the Storefront Backend projec
 
 ---
 
+## SQL Queries Examples
+
+### Users Table
+
+**SELECT all users**: `SELECT * FROM users;`
+**SELECT user by ID**: `SELECT * FROM users WHERE id = 1;`
+**SELECT user by email**: `SELECT * FROM users WHERE email = 'leen@example.com';`
+**INSERT new user**: `INSERT INTO users (first_name, last_name, email, password_hash) VALUES ('Leen', 'Shaikh', 'leen@example.com', 'hashed_password');`
+**UPDATE user information**: `UPDATE users SET first_name = 'Lama', last_name = 'Ali', email = 'lama@example.com' WHERE id = 1;`
+**UPDATE user password**: `UPDATE users SET password_hash = 'new_hashed_password' WHERE id = 1;`
+**DELETE user**: `DELETE FROM users WHERE id = 3;`
+
+### Products Table
+
+**SELECT all products**: `SELECT * FROM products;`
+**SELECT product by ID**: `SELECT * FROM products WHERE id = 5;`
+**SELECT products by category**: `SELECT * FROM products WHERE category = 'fruits';`
+**INSERT new product**: `INSERT INTO products (name, price, category) VALUES ('Apple', 2.5, 'fruits');`
+**UPDATE product**: `UPDATE products SET name = 'Orange', price = 3 WHERE id = 5;`
+**DELETE product**: `DELETE FROM products WHERE id = 5;`
+
+### Orders Table
+
+**SELECT all orders**: `SELECT * FROM orders;`
+**SELECT order by ID**: `SELECT * FROM orders WHERE id = 10;`
+**SELECT orders for a specific user**: `SELECT * FROM orders WHERE user_id = 1;`
+**INSERT new order**: `INSERT INTO orders (user_id, status) VALUES (1, 'active');`
+**UPDATE order status**: `UPDATE orders SET status = 'completed' WHERE id = 10;`
+**DELETE order**: `DELETE FROM orders WHERE id = 10;`
+
+### Order_Products Table
+
+**SELECT all products in orders**: `SELECT * FROM order_products;`
+**SELECT products in a specific order**: `SELECT * FROM products p JOIN order_products op ON p.id = op.product_id WHERE op.order_id = 10;`
+**INSERT product into order**: `INSERT INTO order_products (order_id, product_id, quantity) VALUES (10, 5, 3);`
+**UPDATE quantity of product in an order**: `UPDATE order_products SET quantity = 5 WHERE order_id = 10 AND product_id = 5;`
+**DELETE product from order**: `DELETE FROM order_products WHERE order_id = 10 AND product_id = 5;`
+
 ## API Routes
 
 ### Auth
