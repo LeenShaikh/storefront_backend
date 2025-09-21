@@ -1,5 +1,5 @@
 /** @type {import('node-pg-migrate').Migration} */
-exports.up = (pgm) => {
+export const up = (pgm) => {
   // users table
   pgm.createTable('users', {
     id: 'id',
@@ -35,7 +35,7 @@ exports.up = (pgm) => {
   });
 };
 
-exports.down = (pgm) => {
+export const down = (pgm) => {
   pgm.dropTable('order_products');
   pgm.dropTable('orders');
   pgm.dropTable('products');

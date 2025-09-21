@@ -40,4 +40,13 @@ export class UserModel {
   async delete(id: number): Promise<void> {
     await pool.query('DELETE FROM users WHERE id=$1', [id]);
   }
+
+  async authenticate(email: string, password: string): Promise<User | null> {
+    const result = await pool.query('SELECT * FROM users WHERE email=$1', [email]);
+    const user = result.rows[0];
+    if (user && (await bcrypt.compare(password, user.password))) {
+      return user;
+    }
+    return null;
+  }
 }
