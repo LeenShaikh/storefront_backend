@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../app.js";
+import app from "../../app.js";
 import { describe, it, expect } from "vitest";
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsZWVuQGV4YW1wbGUuY29tIiwiaWF0IjoxNzU4NDU5NzAxLCJleHAiOjE3NTg0NjY5MDF9.jCeVlsw2LGNHuWbjXE0_8R78KarHWz4jnazlkKVlM0A";

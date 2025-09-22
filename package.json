@@ -8,7 +8,8 @@
     "dev": "node --loader ts-node/esm src/server.ts",
     "migrate:up": "node-pg-migrate up",
     "migrate:down": "node-pg-migrate down",
-    "test": "vitest"
+     "test:api": "vitest run tests/api",
+     "test:models": "vitest run tests/models"
   },
   "keywords": [],
   "author": "",

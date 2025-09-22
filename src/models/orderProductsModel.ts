@@ -27,14 +27,26 @@ export class OrderProductModel {
   }
 
   async update(id: number, op: Partial<OrderProduct>): Promise<OrderProduct> {
-    const result = await pool.query(
-      'UPDATE order_products SET order_id=$1, product_id=$2, quantity=$3 WHERE id=$4 RETURNING *',
-      [op.order_id, op.product_id, op.quantity, id]
-    );
-    return result.rows[0];
-  }
+  const current = await this.getById(id);
+  if (!current) throw new Error('OrderProduct not found');
 
-  async delete(id: number): Promise<void> {
-    await pool.query('DELETE FROM order_products WHERE id=$1', [id]);
+  const updated = await pool.query(
+    'UPDATE order_products SET order_id=$1, product_id=$2, quantity=$3 WHERE id=$4 RETURNING *',
+    [
+      op.order_id ?? current.order_id,
+      op.product_id ?? current.product_id,
+      op.quantity ?? current.quantity,
+      id
+    ]
+  );
+  return updated.rows[0];
+}
+
+
+  async delete(id: number): Promise<OrderProduct> {
+    const current = await this.getById(id);
+    if (!current) throw new Error('OrderProduct not found');
+    const result = await pool.query('DELETE FROM order_products WHERE id=$1 RETURNING *', [id]);
+    return result.rows[0];
   }
 }

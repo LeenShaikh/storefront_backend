@@ -106,6 +106,8 @@ The project contains the following tables:
 
 - DELETE /orders/:id/products/:productId → Remove a product from an order (protected)
 
+
+
 ## Tests API endpoints
 
 ### Using Vitest
@@ -124,7 +126,7 @@ All protected route tests must use a valid token to pass successfully.
 
 #### Running Tests
 To run all API tests:
-`npm test`
+`npm test:api`
 This will run all Vitest test suites.
 
 - Make sure the server is not running separately; Vitest will start the app internally.
@@ -164,6 +166,23 @@ Authorization: Bearer <your_token_here>
 Try any protected endpoint like this:
 `GET http://localhost:3000/users`
 
+
+## Unit Tests
+Unit tests were created for all core models in the project using Vitest.
+Unit tests include:
+- UserModel: Tests user creation, update, deletion, query by ID, and password authentication.
+
+- ProductModel: Tests product creation, update, deletion, and query by ID.
+
+- OrderModel: Tests order creation, update, deletion, and query by ID.
+
+- OrderProductModel: Tests linking products to orders, updating, deleting, and querying by ID.
+All of these tests ensure that basic database operations are working properly before models are used in the project.
+
+#### Running Tests
+To run all API tests:
+`npm test:models`
+This will run all Vitest test suites.
 
 ## Notes
 
